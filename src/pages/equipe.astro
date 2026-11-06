@@ -1,47 +1,23 @@
-<html lang="pt-BR">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nossa Equipe | Nextage Corporation</title>
-  </head>
-  <body>
-    <header>
-      <strong>Nextage Corporation</strong>
-      <nav>
-        <ul>
-          <li><a href="/">Início</a></li>
-          <li><a href="/sobre">Sobre</a></li>
-          <li><a href="/equipe">Equipe</a></li>
-          <li><a href="/contato">Contato</a></li>
-        </ul>
-      </nav>
-    </header>
-    <main>
-      <section>
-        <h1>Nossa Equipe Técnica</h1>
-        <p>Conheça os profissionais que transformam ideias em soluções tecnológicas eficientes e acessíveis.</p>
-        <ul>
-          <li>
-            <h2>Akiles Ribeiro Moura</h2>
-            <strong>Desenvolvedor de Software</strong>
-            <p>Desenvolve os sistemas e sites da Nextage, transformando as ideias dos clientes em soluções funcionais.</p>
-          </li>
-          <li>
-            <h2>Clarke Griffin</h2>
-            <strong>Analista de Sistemas</strong>
-            <p>Analisa as necessidades dos clientes e traduz os requisitos em sistemas eficientes e bem planejados.</p>
-          </li>
-          <li>
-            <h2>Walter Hartwell White</h2>
-            <strong>Analista de Suporte e Infraestrutura</strong>
-            <p>Cuida do suporte e da infraestrutura, garantindo que as soluções funcionem com estabilidade e segurança.</p>
-          </li>
-        </ul>
-      </section>
-    </main>
-    <footer>
-      <p>&copy; 2026 Nextage Corporation. Todos os direitos reservados.</p>
-    </footer>
-  </body>
-</html>
+---
+import LayoutBase from '../layouts/LayoutBase.astro';
+import { empresa } from '../data/empresa.js';
+---
+
+<LayoutBase
+  titulo="Nossa Equipe"
+  descricao={`Conheça os profissionais por trás da ${empresa.nome}.`}
+>
+  <section>
+    <h1>Nossa Equipe Técnica</h1>
+    <p>Conheça os profissionais que transformam ideias em soluções tecnológicas eficientes e acessíveis.</p>
+    <ul>
+      {empresa.equipe.map((membro) => (
+        <li>
+          <h2>{membro.nome}</h2>
+          <strong>{membro.cargo}</strong>
+          <p>{membro.descricao}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+</LayoutBase>
